@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShopApp.DataAccess;
 
@@ -40,9 +40,9 @@ public class ShopDbContex : DbContext
 
     public record Product(int Id, string Nombre, string Descripcion, decimal Precio, int CategoryId)
     {
+        public Category Category { get; set; }
     }
 
     public record Client(int Id, string Nombre, string Direccion);
-
-
 }
+
