@@ -1,4 +1,6 @@
-﻿namespace ShopApp;
+﻿using ShopApp.DataAccess;
+
+namespace ShopApp;
 
 public partial class MainPage : ContentPage
 {
@@ -7,18 +9,11 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		var dbContext = new ShopDbContex();
+		category.Text = dbContext.Categories.Count().ToString();
+		client.Text = dbContext.Clients.Count().ToString();
+		product.Text = dbContext.Products.Count().ToString();
 	}
 }
 

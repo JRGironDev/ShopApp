@@ -29,10 +29,15 @@ public class ShopDbContex : DbContext
             new Product(1, "Radio Digital", "Es un radio de banda ancha", 100, 1),
             new Product(2, "Reloj electrónico Honda", "Reloj de muy buena calidad", 50, 1),
             new Product(3, "Laptop HP", "Laptor para escritorio y manejo de effice", 900, 2),
-            new Product(4, "Laptop Acer", "Laptor para escritorio y manejo de effice", 1200, 2),
+            new Product(4, "Laptop Acer", "Laptor para escritorio y manejo de  effice", 1200, 2),
             new Product(5, "Laptop Apple", "Laptor para escritorio y manejo de effice", 1500, 2),
             new Product(6, "Laptop Galaxy 2", "Laptor para escritorio y manejo de effice", 1800, 3),
             new Product(7, "Iphone 4", "Apple dispositivo de gran capacidad", 1500, 3)
+        );
+
+        modelBuilder.Entity<Client>().HasData(
+            new Client(1, "José Martinez", "Avenida la plaza 345"),
+            new Client(2, "Rolando la Paz", "Pasaje Nueva Rosa 556")
         );
     }
 
