@@ -3,38 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.MainPage">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <Label
-            Grid.Row="0"
-            Grid.Column="0"
-            x:Name="category" />
-
-        <Label
-            Grid.Row="0"
-            Grid.Column="1"
-            x:Name="client" />
-
-        <Label
-            Grid.Row="1"
-            Grid.Column="0"
-            x:Name="product" />
-
-        <Button
-            Grid.Row="2"
-            Grid.ColumnSpan="2"
-            HorizontalOptions="Center"
-            Text="Guardar" />
-    </Grid>
+    <VerticalStackLayout>
+        <Label x:Name="category" />
+        <Label x:Name="client" />
+        <Label x:Name="product" />
+    </VerticalStackLayout>
 </ContentPage>
 
