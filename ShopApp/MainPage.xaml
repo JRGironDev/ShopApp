@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.MainPage">
 
-    <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+    <Grid ColumnDefinitions="*, *" RowDefinitions="*, *" Style="{StaticResource MiGridVaxi}" >
         <Label FontSize="30" x:Name="category" />
         <Label FontSize="30" x:Name="client" Grid.Column="1" />
         <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1" />
