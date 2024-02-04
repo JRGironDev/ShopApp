@@ -2,12 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.MainPage">
-    
-    <Grid ColumnDefinitions="*, *" RowDefinitions="*, *" Style="{StaticResource MiGridVaxi}" >
-        <Label FontSize="30" x:Name="category" />
-        <Label FontSize="30" x:Name="client" Grid.Column="1" />
-        <Label FontSize="30" x:Name="product" Grid.Column="1" Grid.Row="1" />
-    </Grid>
+
+    <VerticalStackLayout>
+        <Button Text="Boton" />
+        <DatePicker />
+        <Editor Placeholder="Esto es un editor" HeightRequest="200" />
+        <Entry Placeholder="Esto es un entry" />
+        <Picker>
+            <Picker.Items>
+                <x:String>Vaxi</x:String>
+                <x:String>VaxiDrez.com</x:String>
+                <x:String>Nestor Arcilla</x:String>
+            </Picker.Items>
+        </Picker>
+        <Stepper Minimum="0" Maximum="10" Increment="1"/>
+        <Switch IsToggled="false" />
+        <Slider Minimum="0" Maximum="1" />
+        <TimePicker />
+    </VerticalStackLayout>
 </ContentPage>
 
     
