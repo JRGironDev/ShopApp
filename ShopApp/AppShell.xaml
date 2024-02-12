@@ -4,12 +4,25 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:ShopApp.Views"
-    Shell.FlyoutBehavior="Flyout">
+    Shell.FlyoutBehavior="Flyout"
+    xmlns:info="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials">
     
+    <Shell.FlyoutHeader>
+        <Image Source="dotnet_bot.svg" WidthRequest="120" Margin="10"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="10">
+            <Label Text="{x:Static info:AppInfo.Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="{x:Static info:AppInfo.VersionString}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+
     <ShellContent
         Title="Acerca de la página"
         ContentTemplate="{DataTemplate views:AboutPage}"
-        Route="AboutPage" />
+        Route="AboutPage">
+    </ShellContent>
 
     <FlyoutItem Title="Configuración">
         <Tab Title="Resumen">
@@ -40,5 +53,9 @@
                 Route="ClientsPage" />
         </Tab>
     </FlyoutItem>
+
+    <MenuItem 
+        Text="Abrir Página" 
+        Clicked="MenuItem_Clicked" />
 </Shell>
 
