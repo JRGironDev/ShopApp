@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ShopApp.DataAccess;
+using ShopApp.Views;
 
 namespace ShopApp;
 
@@ -19,6 +20,8 @@ public static class MauiProgram
 		var dbContext = new ShopDbContex();
 		dbContext.Database.EnsureCreated();
 		dbContext.Dispose();
+
+		Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
 
 #if DEBUG
 		builder.Logging.AddDebug();
