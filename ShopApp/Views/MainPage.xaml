@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopApp.Views.MainPage">
+
+    <Grid 
+        ColumnDefinitions="Auto, Auto" 
+        RowDefinitions="Auto, Auto, Auto"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+
+        <Ellipse 
+            WidthRequest="50" 
+            HeightRequest="50" 
+            Fill="LightSteelBlue" 
+            Margin="8" />
+        <Label 
+            x:Name="category" 
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30" />
+        <Label 
+            Grid.Column="1"
+            Text="Categorias" 
+            VerticalTextAlignment="Center" 
+            FontSize="30" />
+        
+        <Ellipse 
+            Grid.Row="1"
+            WidthRequest="50" 
+            HeightRequest="50" 
+            Fill="LightSteelBlue" 
+            Margin="8" />
+        <Label
+            Grid.Row="1" 
+            x:Name="product" 
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30"/>
+        <Label
+            Grid.Row="1" 
+            Grid.Column="1"
+            Text="Productos" 
+            VerticalTextAlignment="Center" 
+            FontSize="30"/>
+
+        <Ellipse 
+            Grid.Row="2"
+            WidthRequest="50" 
+            HeightRequest="50" 
+            Fill="LightSteelBlue" 
+            Margin="8" />
+        <Label
+            Grid.Row="2" 
+            x:Name="client" 
+            VerticalTextAlignment="Center" 
+            HorizontalTextAlignment="Center" 
+            FontSize="30"/>
+        <Label
+            Grid.Row="2" 
+            Grid.Column="1"
+            Text="Clientes" 
+            VerticalTextAlignment="Center" 
+            FontSize="30"/>
+    </Grid>
+
+</ContentPage>
+
+    

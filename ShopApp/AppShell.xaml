@@ -3,13 +3,42 @@
     x:Class="ShopApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ShopApp"
-    Shell.FlyoutBehavior="Disabled">
-
+    xmlns:views="clr-namespace:ShopApp.Views"
+    Shell.FlyoutBehavior="Flyout">
+    
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Acerca de la página"
+        ContentTemplate="{DataTemplate views:AboutPage}"
+        Route="AboutPage" />
 
+    <FlyoutItem Title="Configuración">
+        <Tab Title="Resumen">
+            <ShellContent
+                Title="Data System"
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="MainPage" />
+        </Tab>
+
+        <Tab Title="Productos">
+            <ShellContent
+                Title="Productos"
+                ContentTemplate="{DataTemplate views:ProductsPage}"
+                Route="ProductPage" />
+        </Tab>
+
+        <Tab Title="Categorias">
+            <ShellContent
+                Title="Categorias"
+                ContentTemplate="{DataTemplate views:CategoriesPage}"
+                Route="CategoriesPage" />
+        </Tab>
+
+        <Tab Title="Clientes">
+            <ShellContent
+                Title="Clientes"
+                ContentTemplate="{DataTemplate views:ClientsPage}"
+                Route="ClientsPage" />
+        </Tab>
+    </FlyoutItem>
 </Shell>
 
