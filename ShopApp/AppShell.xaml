@@ -54,6 +54,12 @@
         </Tab>
     </FlyoutItem>
 
+    <ShellContent
+        Title="Help Support"
+        ContentTemplate="{DataTemplate views:HelpSupportPage}"
+        Route="HelpSupportPage">
+    </ShellContent>
+
     <MenuItem 
         Text="Abrir Página" 
         Clicked="MenuItem_Clicked" />
