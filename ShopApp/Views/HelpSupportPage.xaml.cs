@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using ShopApp.DataAccess;
+using static ShopApp.DataAccess.ShopDbContex;
 
 namespace ShopApp.Views;
 
@@ -18,12 +20,13 @@ public partial class HelpSupportPage : ContentPage
 	}
 }
 
-public class HelpSupportData : INotifyPropertyChanged
+public class HelpSupportData : BindingUtilObject
 {
-	/// <summary>
-	/// public int VisitasPendientes { get; set; }
-	/// </summary>
-	/// 
+	public HelpSupportData()
+	{
+		var database = new ShopDbContex();
+		Clients = new ObservableCollection<Client>(database.Clients);
+	}
 	public int _visitasPendientes;
 
 	public int VisitasPendientes
@@ -31,11 +34,27 @@ public class HelpSupportData : INotifyPropertyChanged
 		get { return _visitasPendientes; }
 		set
 		{
-			_visitasPendientes = value;
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("VisitasPendientes"));
+			if (_visitasPendientes != value)
+			{
+				_visitasPendientes = value;
+				RaisePropertyChanged();
+			}
 		}
 	}
 
-	public event PropertyChangedEventHandler PropertyChanged;
+	private ObservableCollection<Client> _clients;
+
+	public ObservableCollection<Client> Clients
+	{
+		get { return _clients; }
+		set
+		{
+			if (_clients != value)
+			{
+				_clients = value;
+				RaisePropertyChanged();
+			}
+		}
+	}
 }
 
