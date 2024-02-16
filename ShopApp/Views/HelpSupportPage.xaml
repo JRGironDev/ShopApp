@@ -4,23 +4,19 @@
              xmlns:views="clr-namespace:ShopApp.Views"
              x:Class="ShopApp.Views.HelpSupportPage">
 
-    <ContentPage.Resources>
-        <views:HelpSupportData x:Key="data" VisitasPendientes="10"/>
-    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <views:HelpSupportData VisitasPendientes="10"/>
+    </ContentPage.BindingContext>
 
     <Grid
         RowDefinitions="Auto, *">
         <Label 
-            Text="{Binding Source={StaticResource data}, 
-                Path=VisitasPendientes, 
-                Mode=OneWay}" 
-                FontSize="30"/>
+            Text="{Binding Clients.Count, Mode=OneWay}" 
+            FontSize="30"/>
 
         <CollectionView
             Grid.Row="1" 
-            ItemsSource="{Binding Source={StaticResource data}, 
-                Path=Clients, 
-                Mode=OneWay}" />  
+            ItemsSource="{Binding Clients, Mode=OneWay}" />  
         
     </Grid>
 
