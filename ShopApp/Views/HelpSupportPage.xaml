@@ -15,7 +15,9 @@
             FontSize="30"/>
 
         <CollectionView
-            Grid.Row="1" 
+            Grid.Row="1"
+            SelectionMode="Single"
+            SelectedItem="{Binding ClienteSeleccionado, Mode=TwoWay}" 
             ItemsSource="{Binding Clients, Mode=OneWay}" />  
         
     </Grid>
