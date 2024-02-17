@@ -11,9 +11,12 @@
 
     <Grid ColumnDefinitions="*, *">
         <VerticalStackLayout>
-            <Picker 
+            <CollectionView 
                 ItemsSource="{Binding Products}"
-                SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}" />
+                SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}" 
+                ItemTemplate="{StaticResource ProductDataTemplate}"
+                HeightRequest="300"
+                SelectionMode="Single" />
 
             <HorizontalStackLayout VerticalOptions="Center">
                 <Stepper 
@@ -32,11 +35,11 @@
 
         <VerticalStackLayout Grid.Column="1">
             <Label Text="Nombre del producto" />
-            <Label />
+            <Label Text="{Binding ProductoSeleccionado.Nombre}"/>
             <Label Text="Descripción del producto" />
-            <Label />
+            <Label Text="{Binding ProductoSeleccionado.Descripcion}"/>
             <Label Text="Precio del producto" />
-            <Label />
+            <Label Text="{Binding ProductoSeleccionado.Precio, StringFormat='{0:C}'}"/>
         </VerticalStackLayout>
     </Grid>
 
