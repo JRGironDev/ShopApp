@@ -15,7 +15,7 @@
     <CollectionView 
         x:Name="products"
         SelectionMode="Single"
-        ItemTemplate="{StaticResource ProductDataTemplate}"/>
+        ItemTemplate="{StaticResource ProductDataTemplate}" />
 
 </ContentPage>
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using ShopApp.DataAccess;
 using static ShopApp.DataAccess.ShopDbContex;
 
@@ -24,6 +25,8 @@ public class HelpSupportDetailData : BindingUtilObject
 		var database = new ShopDbContex();
 		Products = new ObservableCollection<Product>(database.Products);
 	}
+
+	public ICommand AddCommand { get; set; }
 
 	private ObservableCollection<Product> _products;
 	public ObservableCollection<Product> Products
