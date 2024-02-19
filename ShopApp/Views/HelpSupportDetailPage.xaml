@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.Views.HelpSupportDetailPage"
-             xmlns:views="clr-namespace:ShopApp.Views"
+             xmlns:vm="clr-namespace:ShopApp.ViewModels"
              Title="HelpSupportDetailPage" >
 
     <ContentPage.BindingContext>
-        <views:HelpSupportDetailData />
+        <vm:HelpSupportDetailViewModel />
     </ContentPage.BindingContext>
 
-    <Grid RowDefinitions="*, Auto">
+    <Grid RowDefinitions="*, Auto, *">
         <Grid ColumnDefinitions="*, *">
             <VerticalStackLayout>
                 <CollectionView 
@@ -47,7 +47,11 @@
         <Button 
             Grid.Row="1" 
             Text="Agregar" 
-            Command="" />
+            Command="{Binding AddCommand}" />
+
+        <CollectionView 
+            Grid.Row="2"
+            ItemsSource="{Binding Compras}" />
     </Grid>
 </ContentPage>
 
