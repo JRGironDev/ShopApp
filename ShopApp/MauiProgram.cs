@@ -26,6 +26,10 @@ public static class MauiProgram
 		builder.Services.AddTransient<HelpSupportDetailPage>();
 		builder.Services.AddTransient<ClientsViewModel>();
 		builder.Services.AddTransient<ClientsPage>();
+		builder.Services.AddTransient<ProductsViewModel>();
+		builder.Services.AddTransient<ProductsPage>();
+		builder.Services.AddTransient<ProductDetailViewModal>();
+		builder.Services.AddTransient<ProductDetailPage>();
 
 		var dbContext = new ShopDbContex();
 		dbContext.Database.EnsureCreated();

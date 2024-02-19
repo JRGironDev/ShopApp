@@ -5,10 +5,6 @@
              xmlns:vm="clr-namespace:ShopApp.ViewModels"
              Title="HelpSupportDetailPage" >
 
-    <ContentPage.BindingContext>
-        <vm:HelpSupportDetailViewModel />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="*, Auto, *">
         <Grid ColumnDefinitions="*, *">
             <VerticalStackLayout>
@@ -51,7 +47,47 @@
 
         <CollectionView 
             Grid.Row="2"
-            ItemsSource="{Binding Compras}" />
+            ItemsSource="{Binding Compras}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    Text="Eliminar" 
+                                    BackgroundColor="LightYellow"
+                                    Command="{Binding BindingContext.EliminarCompraCommand,
+                                    Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid 
+                            ColumnDefinitions="*, 3*, *, *"
+                            HeightRequest="60"
+                            Padding="4">
+                            <Label 
+                                Text="{Binding Cantidad}" 
+                                VerticalTextAlignment="Center" />
+
+                            <Label
+                                Grid.Column="1" 
+                                Text="{Binding ProductoNombre}" 
+                                VerticalOptions="Center" />
+
+                            <Label 
+                                Grid.Column="2"
+                                Text="{Binding ProductoPrecio, StringFormat='{0:C}'}" 
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="3"
+                                Text="{Binding Total, StringFormat='{0:C}'}" 
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>
 

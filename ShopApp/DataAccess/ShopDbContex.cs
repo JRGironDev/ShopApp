@@ -53,6 +53,13 @@ public record Product(int Id, string Nombre, string Descripcion, decimal Precio,
 
 public record Client(int Id, string Nombre, string Direccion);
 
-public record Compra(int Id, int ProductId, int Cantidad);
+public record Compra(
+    int Id,
+    int ProductId,
+    int Cantidad,
+    string ProductoNombre,
+    decimal Precio,
+    decimal Total
+);
 
 
