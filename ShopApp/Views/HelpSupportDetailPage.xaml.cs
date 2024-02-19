@@ -2,17 +2,11 @@
 
 namespace ShopApp.Views;
 
-public partial class HelpSupportDetailPage : ContentPage, IQueryAttributable
+public partial class HelpSupportDetailPage : ContentPage
 {
-	public HelpSupportDetailPage()
+	public HelpSupportDetailPage(HelpSupportDetailViewModel viewModel)
 	{
 		InitializeComponent();
-	}
-
-	public void ApplyQueryAttributes(IDictionary<string, object> query)
-	{
-		Title = $"Cliente {query["id"]}";
-		var clientId = int.Parse(query["id"].ToString());
-		(BindingContext as HelpSupportDetailViewModel).ClientId = clientId;
+		BindingContext = viewModel;
 	}
 }
