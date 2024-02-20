@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows.Input;
 using ShopApp.DataAccess;
 using CommunityToolkit.Mvvm.Input;
+using ShopApp.Services;
 
 namespace ShopApp.ViewModels;
 public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttributable
@@ -24,7 +25,9 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
 
     [ObservableProperty]
     private int cantidad;
-    public HelpSupportDetailViewModel(IConnectivity connectivity)
+
+    private CompraService _compraService;
+    public HelpSupportDetailViewModel(IConnectivity connectivity, CompraService compraService)
     {
         var database = new ShopDbContex();
         Products = new ObservableCollection<Product>(database.Products);
@@ -44,6 +47,18 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         );
         _connectivity = connectivity;
         _connectivity.ConnectivityChanged += OnConnectivityChanged;
+        _compraService = compraService;
+    }
+
+    [RelayCommand(CanExecute = nameof(StatusConnection))]
+    private async Task EnviarCompra()
+    {
+        var resultado = await _compraService.EnviarData(Compras);
+        if (resultado)
+        {
+            await Shell.Current.DisplayAlert("Compra", "Compra realizada con éxito", "Ok");
+            Compras.Clear();
+        }
     }
 
     private void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
@@ -54,12 +69,6 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     private bool StatusConnection()
     {
         return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
-    }
-
-    [RelayCommand(CanExecute = nameof(StatusConnection))]
-    private void EnviarCompra()
-    {
-
     }
 
     public ICommand AddCommand { get; set; }
