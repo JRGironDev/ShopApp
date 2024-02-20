@@ -30,6 +30,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<ProductsPage>();
 		builder.Services.AddTransient<ProductDetailViewModal>();
 		builder.Services.AddTransient<ProductDetailPage>();
+		builder.Services.AddSingleton(Connectivity.Current);
 
 		var dbContext = new ShopDbContex();
 		dbContext.Database.EnsureCreated();
@@ -41,7 +42,6 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-
 		return builder.Build();
 	}
 }

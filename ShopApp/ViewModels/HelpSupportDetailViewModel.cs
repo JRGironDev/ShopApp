@@ -8,6 +8,8 @@ using CommunityToolkit.Mvvm.Input;
 namespace ShopApp.ViewModels;
 public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttributable
 {
+    private readonly IConnectivity _connectivity;
+
     [ObservableProperty]
     private ObservableCollection<Compra> compras = new ObservableCollection<Compra>();
 
@@ -22,7 +24,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
 
     [ObservableProperty]
     private int cantidad;
-    public HelpSupportDetailViewModel()
+    public HelpSupportDetailViewModel(IConnectivity connectivity)
     {
         var database = new ShopDbContex();
         Products = new ObservableCollection<Product>(database.Products);
@@ -40,6 +42,24 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
         },
         () => true
         );
+        _connectivity = connectivity;
+        _connectivity.ConnectivityChanged += OnConnectivityChanged;
+    }
+
+    private void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+    {
+        EnviarCompraCommand.NotifyCanExecuteChanged();
+    }
+
+    private bool StatusConnection()
+    {
+        return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
+    }
+
+    [RelayCommand(CanExecute = nameof(StatusConnection))]
+    private void EnviarCompra()
+    {
+
     }
 
     public ICommand AddCommand { get; set; }
