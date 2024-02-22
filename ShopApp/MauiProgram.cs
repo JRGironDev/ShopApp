@@ -34,7 +34,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<CompraService>();
 		builder.Services.AddSingleton<HttpClient>();
 		builder.Services.AddSingleton<IDatabaseRutaService, DatabaseRutaService>();
-		builder.Services.AddSingleton<ShopOutDbContext>();
+		builder.Services.AddDbContext<ShopOutDbContext>();
 
 		var dbContext = new ShopDbContex();
 		dbContext.Database.EnsureCreated();
