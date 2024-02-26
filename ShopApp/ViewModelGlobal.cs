@@ -3,7 +3,6 @@
 namespace ShopApp;
 public partial class ViewModelGlobal : ObservableObject
 {
-
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     bool isBusy;

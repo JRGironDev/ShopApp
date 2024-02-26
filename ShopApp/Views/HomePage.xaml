@@ -48,6 +48,8 @@
                     SelectionMode="Single"
                     HeightRequest="50"
                     ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding CategoriaSeleccionada}"
+                    SelectionChangedCommand="{Binding CategoryEventSelectedCommand}"
                     BackgroundColor="White"
                     >
                     <CollectionView.ItemsLayout>
@@ -77,27 +79,11 @@
                                         Text="{Binding NombreCategory}"
                                         />
                                 </HorizontalStackLayout>
-                                
-                                
                             </Border>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    
-                    
+                    </CollectionView.ItemTemplate>     
                 </CollectionView>
-                
-
             </VerticalStackLayout>
-            
-            
-            
-            
         </Grid>
-        
-        
-        
     </ScrollView>
-    
-    
-    
 </ContentPage>
