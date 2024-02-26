@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using Newtonsoft.Json;
 using ShopApp.Models.Backend.Login;
 
@@ -15,7 +15,7 @@ public class SecurityService
 
     public async Task<bool> Login(string email, string password)
     {
-        var url = "http://192.168.0.2/api/usuario/login";
+        var url = "http://192.168.0.3/api/usuario/login";
 
         var loginRequest = new LoginRequest
         {

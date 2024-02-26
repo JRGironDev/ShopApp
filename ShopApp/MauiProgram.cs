@@ -45,6 +45,7 @@ public static class MauiProgram
 
 		Routing.RegisterRoute(nameof(ProductDetailPage), typeof(ProductDetailPage));
 		Routing.RegisterRoute(nameof(HelpSupportDetailPage), typeof(HelpSupportDetailPage));
+		Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
 
 #if DEBUG
 		builder.Logging.AddDebug();
