@@ -1,11 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="ShopApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:ShopApp.Views"
     Shell.FlyoutBehavior="Flyout"
-    xmlns:info="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials">
+    xmlns:info="clr-namespace:Microsoft.Maui.ApplicationModel;assembly=Microsoft.Maui.Essentials"
+    >
+
+    
+    
+    
+    
     
     <Shell.FlyoutHeader>
         <Image Source="dotnet_bot.svg" WidthRequest="120" Margin="10"/>
@@ -13,55 +19,101 @@
 
     <Shell.FlyoutFooter>
         <VerticalStackLayout Padding="10">
-            <Label Text="{x:Static info:AppInfo.Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label Text="{x:Static info:AppInfo.VersionString}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="{x:Static info:AppInfo.Name}"/>
+            <Label Text="{x:Static info:AppInfo.VersionString}"/>
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
 
     <ShellContent
-        Title="Acerca de la página"
+        Title="Acerca de mi Tienda"
         ContentTemplate="{DataTemplate views:AboutPage}"
-        Route="AboutPage">
-    </ShellContent>
+        Route="AboutPage" />
 
-    <FlyoutItem Title="Configuración">
+
+    <ShellContent
+        Title="Resumen de Ventas"
+        ContentTemplate="{DataTemplate views:ResumenPage}"
+        Route="ResumenPage" />
+
+
+   
+
+
+    <FlyoutItem Title="Configuracion">
         <Tab Title="Resumen">
             <ShellContent
-                Title="Data System"
-                ContentTemplate="{DataTemplate views:MainPage}"
-                Route="MainPage" />
+            Title="Data System"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="MainPage" />
         </Tab>
-
+        
         <Tab Title="Productos">
             <ShellContent
-                Title="Productos"
-                ContentTemplate="{DataTemplate views:ProductsPage}"
-                Route="ProductPage" />
+            Title="Products"
+            ContentTemplate="{DataTemplate views:ProductsPage}"
+            Route="ProductsPage" />
         </Tab>
 
         <Tab Title="Categorias">
             <ShellContent
-                Title="Categorias"
-                ContentTemplate="{DataTemplate views:CategoriesPage}"
-                Route="CategoriesPage" />
+            Title="Categorias"
+            ContentTemplate="{DataTemplate views:CategoriesPage}"
+            Route="CategoriesPage" />
         </Tab>
 
         <Tab Title="Clientes">
             <ShellContent
-                Title="Clientes"
-                ContentTemplate="{DataTemplate views:ClientsPage}"
-                Route="ClientsPage" />
+            Title="Clientes"
+            ContentTemplate="{DataTemplate views:ClientsPage}"
+            Route="ClientsPage" />
         </Tab>
+
     </FlyoutItem>
 
-    <ShellContent
+
+
+    <ShellContent 
         Title="Help Support"
         ContentTemplate="{DataTemplate views:HelpSupportPage}"
-        Route="HelpSupportPage">
-    </ShellContent>
+        Route="HelpSupportPage"
+        />
+
 
     <MenuItem 
-        Text="Abrir Página" 
-        Clicked="MenuItem_Clicked" />
-</Shell>
+        Text="Abrir Pagina"
+        Clicked="MenuItem_Clicked"
+        />
 
+    <FlyoutItem Title="Venta de Inmuebles">
+        <Tab Title="Resumen" Icon="home_icon">
+            <ShellContent 
+                Title="Resumen"
+                ContentTemplate="{DataTemplate views:HomePage}"
+                Route="HomePage"
+                />
+        </Tab>
+
+        <Tab Title="Guardados" Icon="bookmark_icon">
+            <ShellContent 
+                Title="Guardados"
+                ContentTemplate="{DataTemplate views:BookmarkPage}"
+                Route="BookmarkPage"
+                />
+        </Tab>
+
+        <Tab Title="Configuracion" Icon="settings_icon">
+            <ShellContent 
+                Title="Configuracion"
+                ContentTemplate="{DataTemplate views:SettingsPage}"
+                Route="SettingsPage"
+                />
+        </Tab>
+
+
+    </FlyoutItem>
+ 
+    
+    
+    
+
+</Shell>

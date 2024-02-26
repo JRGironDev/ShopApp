@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ShopApp.Models.Backend.Inmueble"
+             xmlns:vm="clr-namespace:ShopApp.ViewModels"
+             x:DataType="vm:HomeViewModel"
              x:Class="ShopApp.Views.HomePage"
-             Title="HomePage">
+             Title="Venta Inmuebles">
 
-</ContentPage>
+    <ScrollView>
+        <Grid Margin="20" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
+            <VerticalStackLayout Grid.Row="0" Spacing="5">
+                <Label  Text="{Binding NombreUsuario}" FontSize="Large"/>
+                <Label  Text="Encuentra tu mejor lugar para vivir" FontSize="Medium"/>
+            </VerticalStackLayout>
+
+            <Frame Grid.Row="1" Padding="15">
+                <HorizontalStackLayout Spacing="20">
+                    <Image Source="search_icon" 
+                           Aspect="AspectFit" 
+                           HeightRequest="25"
+                           WidthRequest="25"
+                           />
+                    <Label 
+                        Text="Busqueda"
+                        VerticalOptions="Center"
+                        />
+                </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <VerticalStackLayout Grid.Row="2" Spacing="20">
+                <Label 
+                    Text="Tipos de Viviendas"
+                    FontSize="Large"
+                    />
+
+                <CollectionView
+                    SelectionMode="Single"
+                    HeightRequest="50"
+                    ItemsSource="{Binding Categories}"
+                    BackgroundColor="White"
+                    >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="25"  Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CategoryResponse">
+                            <Border
+                                Padding="16,8"
+                                HorizontalOptions="Center"
+                                >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,10,10"  />
+                                </Border.StrokeShape>
+
+                                <HorizontalStackLayout Spacing="5" HeightRequest="25">
+                                    <Image 
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        WidthRequest="25"
+                                        Source="{Binding ImagenUrl}"
+                                        />
+                                    <Label 
+                                        VerticalOptions="Center"
+                                        FontSize="Medium"
+                                        Text="{Binding NombreCategory}"
+                                        />
+                                </HorizontalStackLayout>
+                                
+                                
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                    
+                </CollectionView>
+                
+
+            </VerticalStackLayout>
+            
+            
+            
+            
+        </Grid>
+        
+        
+        
+    </ScrollView>
     
+    
+    
+</ContentPage>

@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.Views.AboutPage"
              Title="AboutPage">
-       <VerticalStackLayout>
-              <Label Text="Tienda de Electrónicos Shop!"
-               HorizontalOptions="Center" />
-              <Label Text="This is the About Page of the ShopApp."
-               HorizontalOptions="Center" />
-       </VerticalStackLayout>
+    <VerticalStackLayout>
+        <Label 
+            Text="Tienda de Electronicos Shop"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
 </ContentPage>
-
-    

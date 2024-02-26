@@ -8,4 +8,3 @@ namespace ShopApp;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

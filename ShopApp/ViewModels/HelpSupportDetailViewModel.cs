@@ -1,16 +1,19 @@
-using System;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows.Input;
-using ShopApp.DataAccess;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ShopApp.DataAccess;
 using ShopApp.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 
 namespace ShopApp.ViewModels;
+
+
 public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttributable
 {
-    private readonly IConnectivity _connectivity;
 
+    private readonly IConnectivity _connectivity;
+    
     [ObservableProperty]
     private ObservableCollection<Compra> compras = new ObservableCollection<Compra>();
 
@@ -23,19 +26,22 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     [ObservableProperty]
     private Product productoSeleccionado;
 
+
     [ObservableProperty]
     private int cantidad;
+
 
     private CompraService _compraService;
 
     private readonly ShopOutDbContext _outDbContext;
     public HelpSupportDetailViewModel(
-        IConnectivity connectivity,
+        IConnectivity connectivity, 
         CompraService compraService,
         ShopOutDbContext outDbContext)
     {
-        var database = new ShopDbContex();
+        var database = new ShopDbContext();
         Products = new ObservableCollection<Product>(database.Products);
+
         AddCommand = new Command(() =>
         {
             var compra = new Compra(
@@ -45,16 +51,17 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
                 ProductoSeleccionado.Nombre,
                 ProductoSeleccionado.Precio,
                 ProductoSeleccionado.Precio * Cantidad
-            );
+                );
             Compras.Add(compra);
         },
         () => true
         );
         _connectivity = connectivity;
-        _connectivity.ConnectivityChanged += OnConnectivityChanged;
+        _connectivity.ConnectivityChanged += _connectivity_ConnectivityChanged;
         _compraService = compraService;
         _outDbContext = outDbContext;
     }
+
 
     [RelayCommand(CanExecute = nameof(StatusConnection))]
     private async Task EnviarCompra()
@@ -68,15 +75,14 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
                 item.ProductId,
                 item.Cantidad,
                 item.ProductoPrecio
-            ));
+                ));
         }
 
         await _outDbContext.SaveChangesAsync();
 
-        await Shell.Current.DisplayAlert("Compra", "Se almacenaron en la base de datos", "Ok");
+        await Shell.Current.DisplayAlert("Mensaje", "Se almacenaron en la base de datos", "Aceptar");
     }
-
-    private void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+    private void _connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
     {
         EnviarCompraCommand.NotifyCanExecuteChanged();
     }
@@ -84,8 +90,9 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     private bool StatusConnection()
     {
         return _connectivity.NetworkAccess == NetworkAccess.Internet ? true : false;
+    
     }
-
+  
     public ICommand AddCommand { get; set; }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -99,4 +106,7 @@ public partial class HelpSupportDetailViewModel : ViewModelGlobal, IQueryAttribu
     {
         Compras.Remove(compra);
     }
+
 }
+
+

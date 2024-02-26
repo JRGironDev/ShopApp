@@ -1,11 +1,14 @@
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ShopApp;
-
-public abstract class ViewModelGlobal : ObservableObject
+public partial class ViewModelGlobal : ObservableObject
 {
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsNotBusy))]
+    bool isBusy;
+
+    public bool IsNotBusy => !IsBusy;
+
 }
 

@@ -1,29 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ShopApp.Views.ClientsPage">
+             x:Class="ShopApp.Views.ClientsPage"
+             Title="ClientsPage">
 
-    <CarouselView 
-        ItemsSource="{Binding Clients}"
-        CurrentItem="{Binding ClienteSeleccionado, Mode=TwoWay}">
+
+
+    <CarouselView
+            ItemsSource="{Binding Clients}"
+            CurrentItem="{Binding ClientSeleccionado,Mode=TwoWay}"
+        >
         <CarouselView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout VerticalOptions="Center">
-                    <Image 
-                        Source="dotnet_bot.svg" 
-                        WidthRequest="200" />
+                    <Image Source="dotnet_bot.svg" WidthRequest="200"/>
                     <Label 
-                        Text="{Binding Nombre}" 
+                        Text="{Binding Nombre}"
                         HorizontalOptions="Center"
                         FontSize="Subtitle"
-                        Margin="10" />
+                        Margin="10"
+                        />
                     <Label 
-                        Text="{Binding Direccion}" 
-                        HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                        Text="{Binding Direccion}"
+                        HorizontalOptions="Center"
+                        />
+
+                </VerticalStackLayout>                
             </DataTemplate>
         </CarouselView.ItemTemplate>
     </CarouselView>
-</ContentPage>
 
-    
+
+
+
+
+</ContentPage>

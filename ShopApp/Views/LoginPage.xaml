@@ -2,55 +2,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ShopApp.Views.LoginPage"
-             Title="Inicie Sesión">
+             Title="Inicie Sesion">
 
     <VerticalStackLayout 
-        VerticalOptions="Center" 
-        Margin="20, 0, 20, 0"
-        Spacing="20">
+        VerticalOptions="Center"
+        Margin="20,0,20,0"
+        Spacing="20"
+        >
+
         <Image 
-            Source="dotnet_bot" 
-            HeightRequest="80" 
-            WidthRequest="80" 
-            HorizontalOptions="Center" />
+            Source="dotnet_bot"
+            HorizontalOptions="Center"
+            HeightRequest="80"
+            WidthRequest="80"
+            />
 
         <Label 
-            Text="Bienvenido a ShopApp"
-            TextColor="#010101"
-            FontSize="Large" 
-            HorizontalOptions="Center" />
+            Text="Bienvenido a Vaxi Drez"
+            TextColor="#101010"
+            FontSize="Large"
+            HorizontalOptions="Center"
+            />
 
         <Label 
-            Text="Ingrese sus credenciales para iniciar a usa el app"
+            Text="Ingrese sus credenciales para iniciar el uso de la App"
             TextColor="LightSlateGrey"
-            FontSize="Small" 
-            HorizontalOptions="Center" />
-
-        <Label 
-            Text="{Binding Email}"
-            TextColor="LightSlateGrey"
-            FontSize="Small" 
-            HorizontalOptions="Center" />
+            FontSize="Small"
+            HorizontalOptions="Center"
+            />
 
         <Entry 
-            Placeholder="Correo Electrónico"
-            Text="{Binding Email}" />
+            Text="{Binding Email}"
+            Placeholder="Email"
+            />
 
-        <Entry
+        <Entry 
             Text="{Binding Password}"
-            Placeholder="Contraseña"
-            IsPassword="True" />
+            Placeholder="Password"
+            IsPassword="True"
+            />
 
-        <Button
-            Text="Iniciar Sesión"
-            Command="{Binding LoginMethodCommand}"
+        <Button 
+            Text="Iniciar Sesion"
+            HeightRequest="50"
+            FontSize="Medium"
             BackgroundColor="#1d94ab"
-            TextColor="White"
-            CornerRadius="5"
-            HeightRequest="50" 
-            FontSize="Medium"/>
+            Command="{Binding LoginMethodCommand}"
+            />
+
     </VerticalStackLayout>
-
-</ContentPage>
-
     
+    
+    
+</ContentPage>

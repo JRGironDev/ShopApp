@@ -1,20 +1,27 @@
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ShopApp.DataAccess;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ShopApp.ViewModels;
-public partial class ClientsViewModel : ViewModelGlobal
+namespace ShopApp.ViewModels
 {
-    [ObservableProperty]
-    ObservableCollection<Client> clients;
-
-    [ObservableProperty]
-    Client clientSeleccionado;
-
-    public ClientsViewModel()
+    public partial class ClientsViewModel : ViewModelGlobal
     {
-        var database = new ShopDbContex();
-        Clients = new ObservableCollection<Client>(database.Clients);
-    }
 
+        [ObservableProperty]
+        ObservableCollection<Client> clients;
+
+        [ObservableProperty]
+        Client clientSeleccionado;
+
+        public ClientsViewModel()
+        {
+            var database = new ShopDbContext();
+            Clients = new ObservableCollection<Client>(database.Clients);
+        }
+    }
 }

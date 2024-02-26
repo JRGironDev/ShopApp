@@ -8,7 +8,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <converters:PrecioParaColorConverter x:Key="PrecioParaColorConverter" />
-
             <DataTemplate x:Key="ProductDataTemplate" x:DataType="data:Product">
                 <Grid ColumnDefinitions="*, Auto" Padding="4" HeightRequest="80">
                     <VerticalStackLayout VerticalOptions="Center">
@@ -17,24 +16,23 @@
                     </VerticalStackLayout>
 
                     <Label 
-                        Grid.Column="1" 
+                        Grid.Column="1"
                         VerticalOptions="Center"
                         FontAttributes="Bold"
                         FontAutoScalingEnabled="True"
+                        Text="{Binding Precio, StringFormat='{0:C}'}"
                         TextColor="{Binding Precio, Converter={StaticResource PrecioParaColorConverter}}"
-                        Text="{Binding Precio, StringFormat='{0:C}'}" />
+                        />
                 </Grid>
             </DataTemplate>
-
             <Style x:Key="MiGridVaxi" TargetType="Grid">
-                <Setter Property="Background">
+                <Setter Property="Background" >
                     <Setter.Value>
                         <SolidColorBrush Color="{AppThemeBinding Light='LightSteelBlue', Dark='DarkBlue'}" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Padding" Value="20" />
             </Style>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
@@ -42,4 +40,3 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
-

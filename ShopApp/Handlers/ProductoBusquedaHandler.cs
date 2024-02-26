@@ -1,18 +1,21 @@
-using Microsoft.Maui.Controls;
-using ShopApp.DataAccess;
+﻿using ShopApp.DataAccess;
 using ShopApp.Views;
-using static ShopApp.DataAccess.ShopDbContex;
+using System.ComponentModel;
+
 
 namespace ShopApp.Handlers
 {
     public class ProductoBusquedaHandler : SearchHandler
     {
-        ShopDbContex dbContext;
+
+        ShopDbContext dbContext;
 
         public ProductoBusquedaHandler()
         {
-            this.dbContext = new ShopDbContex();
+            this.dbContext = new ShopDbContext();
+
         }
+
         protected override void OnQueryChanged(string oldValue, string newValue)
         {
             if (string.IsNullOrWhiteSpace(newValue))
@@ -20,20 +23,28 @@ namespace ShopApp.Handlers
                 ItemsSource = null;
                 return;
             }
-            else
-            {
-                var resultados = dbContext.Products
-                                .Where(p => p.Nombre.ToLowerInvariant()
-                                .Contains(newValue.ToLowerInvariant())).ToList();
 
-                ItemsSource = resultados;
-            }
+            var resultados = dbContext.Products
+                .Where(p => p.Nombre.ToLowerInvariant()
+                            .Contains(newValue.ToLowerInvariant())).ToList();
+
+            
+
+            ItemsSource = resultados;
+
         }
 
-        protected override async void OnItemSelected(object item)
+        
+
+        protected async override void OnItemSelected(object item)
         {
-            await Shell.Current.GoToAsync($"{nameof(ProductDetailPage)}?id={((Product)item).Id}");
+            var product = item as Product;
+            var uri = $"{nameof(ProductDetailPage)}?id={product.Id}";
+            Shell.Current.CurrentItem = Shell.Current.CurrentItem.Items[0];
+            await Shell.Current.GoToAsync(uri, false);
         }
-    }
 
+         
+
+    }
 }

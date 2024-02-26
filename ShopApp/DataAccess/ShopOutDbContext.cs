@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ShopApp.Services;
 using System;
 using System.Collections.Generic;
@@ -18,16 +18,16 @@ public class ShopOutDbContext : DbContext
     {
         _databaseRuta = databaseRuta;
     }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = $"Filename={_databaseRuta.Get("shopdatabase.db")}";
         optionsBuilder.UseSqlite(connectionString);
     }
+
 }
 
 public record CompraItem(int ClientId, int ProductId, int Cantidad, decimal Precio)
-{
+{ 
     public int Id { get; set; }
 }
-
-

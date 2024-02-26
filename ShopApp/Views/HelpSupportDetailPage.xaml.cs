@@ -1,4 +1,4 @@
-﻿using ShopApp.ViewModels;
+using ShopApp.ViewModels;
 
 namespace ShopApp.Views;
 
@@ -9,4 +9,9 @@ public partial class HelpSupportDetailPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
+
+ 
+
+   
 }
+

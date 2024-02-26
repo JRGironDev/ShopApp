@@ -4,9 +4,9 @@ namespace ShopApp.Views;
 
 public partial class BookmarkPage : ContentPage
 {
-    public BookmarkPage(BookmarkViewModel viewModel)
-    {
-        InitializeComponent();
-        BindingContext = viewModel;
-    }
+	public BookmarkPage(BookmarkViewModel viewModel)
+	{
+		InitializeComponent();
+		BindingContext = viewModel;
+	}
 }

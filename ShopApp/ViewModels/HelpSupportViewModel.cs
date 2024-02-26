@@ -1,33 +1,36 @@
-using System;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ShopApp.DataAccess;
 using ShopApp.Services;
 using ShopApp.Views;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+
 
 namespace ShopApp.ViewModels;
+
+
 public partial class HelpSupportViewModel : ViewModelGlobal
 {
     [ObservableProperty]
-    public int visitasPendientes;
+    private int visitasPendientes;
 
     [ObservableProperty]
     private ObservableCollection<Client> clients;
-    [ObservableProperty]
 
+    [ObservableProperty]
     private Client clienteSeleccionado;
+
+
     private readonly INavegacionService _navegacionService;
     public HelpSupportViewModel(INavegacionService navegacionService)
     {
-        _navegacionService = navegacionService;
-        var database = new ShopDbContex();
+        var database = new ShopDbContext();
         Clients = new ObservableCollection<Client>(database.Clients);
-
-        PropertyChanged += HelpSupportViewModel_PropertyChanged;
+        PropertyChanged += HelpSupportData_PropertyChanged;
+        _navegacionService = navegacionService;
     }
 
-    private async void HelpSupportViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    private async void HelpSupportData_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(ClienteSeleccionado))
         {
@@ -35,4 +38,9 @@ public partial class HelpSupportViewModel : ViewModelGlobal
             await _navegacionService.GoToAsync(uri);
         }
     }
+
+    
+
 }
+
+
