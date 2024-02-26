@@ -38,7 +38,12 @@ public static class MauiProgram
 		builder.Services.AddSingleton<SecurityService>();
 		builder.Services.AddTransient<LoginViewModel>();
 		builder.Services.AddTransient<LoginPage>();
-
+		builder.Services.AddTransient<HomeViewModel>();
+		builder.Services.AddTransient<HomePage>();
+		builder.Services.AddTransient<BookmarkViewModel>();
+		builder.Services.AddTransient<BookmarkPage>();
+		builder.Services.AddTransient<SettingsViewModel>();
+		builder.Services.AddTransient<SettingsPage>();
 		var dbContext = new ShopDbContex();
 		dbContext.Database.EnsureCreated();
 		dbContext.Dispose();
