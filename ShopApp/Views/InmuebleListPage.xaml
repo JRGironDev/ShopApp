@@ -25,7 +25,7 @@
                     <Frame 
                         Grid.Column="0" 
                         Padding="0"
-                        CornerRadius="10" 
+                        CornerRadius="8" 
                         HasShadow="True"
                         IsClippedToBounds="True">
                         <Image 
