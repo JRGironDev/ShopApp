@@ -17,6 +17,9 @@ public partial class HomeViewModel : ViewModelGlobal
 
     [ObservableProperty]
     ObservableCollection<CategoryResponse> categories;
+    
+    [ObservableProperty]
+    ObservableCollection<InmuebleResponse> favoriteInmuebles;
 
     public Command GetDataCommand { get; }
 
@@ -44,7 +47,11 @@ public partial class HomeViewModel : ViewModelGlobal
         {
             IsBusy = true;
             var listCategories = await _inmuebleService.GetCategories();
+            var listInmuebles = await _inmuebleService.GetInmueblesFavoritos();
+            
             Categories = new ObservableCollection<CategoryResponse>(listCategories);
+            FavoriteInmuebles = new ObservableCollection<InmuebleResponse>();
+
         }
         catch (Exception e)
         {

@@ -84,6 +84,67 @@
                     </CollectionView.ItemTemplate>     
                 </CollectionView>
             </VerticalStackLayout>
+            
+            <VerticalStackLayout
+                Grid.Row="3"
+                Spacing="20">
+                <Label 
+                    Text="Mis Inmuebles Favoritos"
+                    FontSize="Large" />
+                <CollectionView
+                    HeightRequest="350"
+                    SelectionMode="Single"
+                    ItemsSource="{Binding FavoriteInmuebles}" >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:InmuebleResponse">
+                            <Frame 
+                                CornerRadius="25"
+                                Padding="15"
+                                BackgroundColor="White">
+                                <Grid RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Frame
+                                        Grid.Row="0"
+                                        HeightRequest="200"
+                                        WidthRequest="250"
+                                        CornerRadius="25"
+                                        Padding="0"
+                                        IsClippedToBounds="True">
+                                        <Image
+                                            Aspect="Fill"
+                                            Source="{Binding ImagenUrl}" />
+                                    </Frame>
+                                    <Label
+                                        Grid.Row="1"
+                                        Text="{Binding Nombre}"
+                                        FontSize="Subtitle" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Text="{Binding Detalle}"
+                                        FontSize="Small" 
+                                        WidthRequest="250"
+                                        LineBreakMode="TailTruncation" />
+                                    <Label
+                                        Grid.Row="3"
+                                        FontSize="Subtitle"
+                                        Text="{Binding Precio, StringFormat='{0:C}'}"
+                                        TextColor="#1d94ab"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+            </VerticalStackLayout>
         </Grid>
     </ScrollView>
 </ContentPage>
